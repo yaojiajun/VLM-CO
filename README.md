@@ -92,7 +92,6 @@ You can generate your own data through the problem-specific environments under `
 
 - **Text DATA**: https://drive.google.com/drive/folders/1bE1coGUa00gfuMkPXnfvldi1-WHGNnEb?usp=sharing
 - **Image DATA**: https://drive.google.com/drive/folders/1VN9crftdW7DTsMQupbc06u6PzRT-Bwnx?usp=sharing
-
 ### Data Format
 
 Each JSON record should contain:
