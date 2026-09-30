@@ -213,4 +213,5 @@ This work builds upon:
 - [Unsloth](https://github.com/unslothai/unsloth) - Efficient LLM fine-tuning
 - [Qwen2.5-VL](https://github.com/QwenLM/Qwen2-VL) - Vision-language foundation model
 - [EOH](https://arxiv.org/pdf/2505.12627) - Efficient Heuristics Generation for Solving Combinatorial Optimization Problems Using Large Language Models
+- [Hercules](https://arxiv.org/pdf/2505.12627) - Efficient Heuristics Generation for Solving Combinatorial Optimization Problems Using Large Language Models
 - [LLMCoSolver](https://github.com/Summer142857/LLMCoSolver) - Prior work on LLM-based CO solvers
