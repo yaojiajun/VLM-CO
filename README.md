@@ -4,6 +4,8 @@
 
 This repository provides a unified framework for solving combinatorial optimization problems using vision-language models (VLMs), specifically fine-tuned on **Qwen2.5-VL-7B-Instruct**.
 
+![Framework](image/framework.png)
+
 ---
 
 ## 🎯 Supported Problems
@@ -83,6 +85,13 @@ pip install -r requirements.txt
 ---
 
 ## 📊 Data Preparation
+
+### Data Format
+
+You can generate your own data through the problem-specific environments under `/Envs/`, or use the data generated in the original paper:
+
+- **SFT DATA**: https://drive.google.com/drive/folders/1bE1coGUa00gfuMkPXnfvldi1-WHGNnEb?usp=sharing
+- **RL DATA**: https://drive.google.com/drive/folders/1VN9crftdW7DTsMQupbc06u6PzRT-Bwnx?usp=sharing
 
 ### SFT Data Format
 
@@ -203,5 +212,5 @@ To add reward functions for other problems, implement them in `rewards.py` follo
 This work builds upon:
 - [Unsloth](https://github.com/unslothai/unsloth) - Efficient LLM fine-tuning
 - [Qwen2.5-VL](https://github.com/QwenLM/Qwen2-VL) - Vision-language foundation model
-- [VDEvo](https://arxiv.org/pdf/2505.12627) - Heuristics generation framework
+- [EOH](https://arxiv.org/pdf/2505.12627) - Efficient Heuristics Generation for Solving Combinatorial Optimization Problems Using Large Language Models
 - [LLMCoSolver](https://github.com/Summer142857/LLMCoSolver) - Prior work on LLM-based CO solvers
