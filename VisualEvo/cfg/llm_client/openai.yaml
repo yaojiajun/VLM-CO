@@ -1,0 +1,5 @@
+_target_: utils.llm_client.openai.OpenAIClient
+model: gpt-4o-mini
+temperature: 1.0
+api_key: sk-qZNp5vWMAmj0kbEELYa6W8aERctnMhLUpt10teN6t2e3Dw7H
+base_url: https://api.chatfire.cn/v1

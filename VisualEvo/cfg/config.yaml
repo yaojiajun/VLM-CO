@@ -1,0 +1,19 @@
+defaults:
+  - _self_
+  - problem: cvrp
+  - llm_client: openai
+  - override hydra/output: local
+
+hydra:
+  job:
+    name: ${problem.problem_name}-${problem.problem_type}
+    chdir: True
+
+algorithm: vdevo
+max_fe: 100            # small smoke-test budget: a handful of individual evaluations
+pop_size: 6
+init_pop_size: 6
+mutation_rate: 0.5
+timeout: 20000       # each individual eval = render + SFT train + eval, can take a long time
+diversify_init_pop: True
+eval_batch_size: 3   # run 3 candidates simultaneously (95GB VRAM / 22GB per model ≈ 4, use 3 for safety)

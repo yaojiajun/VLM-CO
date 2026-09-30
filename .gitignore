@@ -1,0 +1,50 @@
+# Large model files
+*.safetensors
+*.bin
+*.pth
+*.ckpt
+
+# Large data files
+train*.json
+test*.json
+*_train.json
+*_test.json
+data/sft/*.json
+data/rl/*.json
+
+# Keep config files
+!**/cfg/**/*.json
+!package.json
+!tsconfig.json
+
+# Model outputs
+tmp_runs/
+outputs/
+output_*/
+merged_*/
+checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/
+*.cache/
+unsloth_compiled_cache/

@@ -1,0 +1,81 @@
+def draw_v1(processing_times: list, num_jobs: int, num_machines: int, out_path: str) -> None:
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    fig_width = max(8, min(16, num_machines * 1.5))
+    fig_height = max(6, min(14, num_jobs * 1.2))
+
+    fig, ax = plt.subplots(figsize=(fig_width, fig_height), facecolor='white')
+    ax.set_facecolor('white')
+
+    # Calculate statistics
+    max_time = max(max(job) for job in processing_times)
+    total_times = [sum(job) for job in processing_times]
+    max_total = max(total_times)
+
+    # Create color map based on processing time
+    cmap = plt.cm.YlOrRd
+
+    # Draw processing time matrix
+    for job_idx in range(num_jobs):
+        for machine_idx in range(num_machines):
+            proc_time = processing_times[job_idx][machine_idx]
+
+            # Position
+            x = machine_idx
+            y = num_jobs - job_idx - 1
+
+            # Color intensity based on processing time
+            intensity = proc_time / max_time
+            color = cmap(intensity)
+
+            # Draw rectangle
+            rect = plt.Rectangle((x, y), 0.9, 0.9,
+                                facecolor=color,
+                                edgecolor='black',
+                                linewidth=1.5)
+            ax.add_patch(rect)
+
+            # Add processing time text
+            ax.text(x + 0.45, y + 0.45, f'{proc_time}',
+                   ha='center', va='center',
+                   fontsize=9, fontweight='bold',
+                   color='black' if intensity < 0.5 else 'white')
+
+    # Add total time for each job on the right
+    for job_idx in range(num_jobs):
+        y = num_jobs - job_idx - 1
+        total = total_times[job_idx]
+        ax.text(num_machines + 0.5, y + 0.45, f'Σ={total}',
+               ha='left', va='center',
+               fontsize=8, fontweight='bold', color='blue')
+
+    # Set axis properties
+    ax.set_xlim(-0.1, num_machines + 1.5)
+    ax.set_ylim(-0.1, num_jobs)
+
+    # Set labels
+    ax.set_xlabel('Machine Index', fontsize=10, fontweight='bold')
+    ax.set_ylabel('Job Index', fontsize=10, fontweight='bold')
+
+    # Set ticks
+    ax.set_xticks(range(num_machines))
+    ax.set_xticklabels([f'M{i}' for i in range(num_machines)], fontsize=8)
+    ax.set_yticks(range(num_jobs))
+    ax.set_yticklabels([f'J{num_jobs - i - 1}' for i in range(num_jobs)], fontsize=8)
+
+    ax.set_title(
+        f'PFSP Instance\n'
+        f'Jobs: {num_jobs}  |  Machines: {num_machines}  |  Max Time: {max_time}',
+        fontsize=12, fontweight='bold', pad=10
+    )
+
+    ax.grid(True, linestyle='--', alpha=0.3)
+    ax.set_aspect('equal')
+
+    plt.tight_layout()
+    plt.savefig(out_path, dpi=150, bbox_inches='tight', facecolor='white')
+    plt.close(fig)
+    return

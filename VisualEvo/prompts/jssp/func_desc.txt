@@ -1,0 +1,22 @@
+Task Description
+
+Design a visualization function (\texttt{draw}) for JSSP instances that enables a Vision-Language Model (VLM) to generate scheduling solutions directly from images by clearly encoding job operations, machine assignments, and processing times. Incorporate informative visual cues, such as critical path indicators, machine load visualization, or other scheduling-aware patterns, to make good schedules easier for the VLM to perceive.
+
+Inputs：
+jobs: list of jobs, where each job is a list of operations [(machine_id, processing_time), ...].
+num_jobs: int, number of jobs.
+num_machines: int, number of machines.
+
+Outputs：
+draw function: None. The function must save a single image file to out_path that visually encodes the JSSP instance so that a Vision-Language Model can read it and produce a scheduling solution.
+
+Fixed Requirements (MUST NOT BE CHANGED)
+- Grid layout: MUST use a grid-based visualization for operations
+- Axis configuration: MUST include appropriate axis labels for jobs and machines
+
+
+BASIC TECHNICAL REQUIREMENTS:
+- Use matplotlib with the 'Agg' backend
+- Any import statement other than `torch`/`numpy` (e.g. `matplotlib`, `re`, `math`, `os`) must be placed INSIDE the function body, not at module level
+
+

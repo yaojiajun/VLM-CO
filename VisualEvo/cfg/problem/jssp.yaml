@@ -1,0 +1,9 @@
+problem_name: jssp
+problem_type: jssp
+obj_type: min
+problem_size: 80
+func_name: draw
+description: |
+ I need assistance in designing a new image-rendering function that visualizes Job Shop Scheduling Problem (JSSP) instances for consumption by a Vision-Language Model (VLM). The function takes a JSSP instance (jobs with operations, machines, and processing times) and must render it as a single image that a VLM can look at and then predict a good schedule. The rendered images are used to build a training dataset: a base VLM is fine-tuned (LoRA SFT) on a set of these rendered images paired with instructions, and the resulting fine-tuned model's ability to solve held-out JSSP instances purely from images is the ultimate measure of how good the rendering function is. A good rendering function must make job operations, machine assignments, and processing times clearly and unambiguously readable, since any information the VLM cannot read from the image cannot be used to produce a correct solution. The objective is to minimize the makespan of schedules produced by the fine-tuned VLM on a held-out evaluation set of JSSP instances rendered with the same function.
+pro: Job Shop Scheduling Problem (JSSP) 
+alg: Vision-Language Model (VLM) SFT-based Neural Combinatorial Optimization

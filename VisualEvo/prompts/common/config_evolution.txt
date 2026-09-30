@@ -1,0 +1,29 @@
+You are an expert in multi-task Vehicle Routing Problem (VRP) heuristic design.
+
+Below are high-fitness configurations (positive examples) and low-fitness configurations (negative examples) from a heuristic search for the Unified VRP, which includes constraints: Capacity (C), Time Windows (TW), Backhauls (B), Open Routes (O), and Duration Limits (L).
+
+[High-fitness configs]
+{high_configs}
+
+[Low-fitness configs]
+{low_configs}
+
+Contrast the above configurations. Identify:
+1. Which task descriptions led to better heuristics.
+2. What hyperparameter settings (temperature, tau) correlated with higher scores.
+3. Which task descriptions caused conflicting effects in low-fitness configs.
+
+Generate {num_configs} new configurations that improve upon the high-fitness ones. Each configuration should specify a task description as a problem description for the heuristic design task, along with hyperparameters.
+
+Output a JSON array with exactly {num_configs} objects, each with this schema:
+[
+  {{
+    "task_description": "<string: a problem description for the heuristic design task>",
+    "temperature": <float between 0.4 and 1.0>,
+    "tau": <float between 0.4 and 1.0>,
+    "mutation_rate": <float between 0.4 and 1.0>
+  }},
+  ...
+]
+
+Output only valid JSON, no other text.

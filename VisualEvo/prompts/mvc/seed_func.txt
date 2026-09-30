@@ -1,0 +1,104 @@
+def draw_v1(nodes: dict, edges: list, num_nodes: int, out_path: str) -> None:
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+
+    COORD_MAX = 1000
+    grid_size = 25
+
+    nodes_info = [(nid, v['x'], v['y']) for nid, v in nodes.items()]
+    raw_grid = [
+        (nid, round(x / COORD_MAX * (grid_size - 1)), round(y / COORD_MAX * (grid_size - 1)))
+        for nid, x, y in nodes_info
+    ]
+
+    placed = {}
+    positions = {}
+    for nid, gx, gy in raw_grid:
+        cell = (gx, gy)
+        if cell not in placed:
+            placed[cell] = nid
+            positions[nid] = cell
+            continue
+        found = False
+        for radius in range(1, grid_size):
+            for dr in range(-radius, radius + 1):
+                for dc in range(-radius, radius + 1):
+                    if abs(dr) != radius and abs(dc) != radius:
+                        continue
+                    nc, nr = gx + dc, gy + dr
+                    if 0 <= nc < grid_size and 0 <= nr < grid_size and (nc, nr) not in placed:
+                        placed[(nc, nr)] = nid
+                        positions[nid] = (nc, nr)
+                        found = True
+                        break
+                if found:
+                    break
+            if found:
+                break
+        if not found:
+            positions[nid] = (gx, gy)
+
+    # Calculate node degrees
+    degree = {nid: 0 for nid in nodes.keys()}
+    for u, v in edges:
+        degree[u] += 1
+        degree[v] += 1
+
+    max_degree = max(degree.values()) if degree else 1
+
+    fig_in = max(6, min(18, grid_size * 22 / 100))
+    base_ms = max(5, min(12, 140 / grid_size))
+    font_size = max(3.5, min(8, 120 / grid_size))
+
+    fig, ax = plt.subplots(figsize=(fig_in, fig_in), facecolor='white')
+    ax.set_facecolor('white')
+
+    for k_line in range(grid_size + 1):
+        ax.axhline(k_line - 0.5, color='#b0b0b0', lw=0.6, zorder=0)
+        ax.axvline(k_line - 0.5, color='#b0b0b0', lw=0.6, zorder=0)
+
+    ax.set_xlim(-0.5, grid_size - 0.5)
+    ax.set_ylim(-0.5, grid_size - 0.5)
+    ax.set_aspect('equal')
+
+    # Draw edges
+    for u, v in edges:
+        if u in positions and v in positions:
+            x1, y1 = positions[u]
+            x2, y2 = positions[v]
+            ax.plot([x1, x2], [y1, y2], 'gray', lw=1.0, alpha=0.6, zorder=1)
+
+    pts_per_data = fig_in * 72 / grid_size
+
+    # Draw nodes with size based on degree
+    for nid, (col, row) in positions.items():
+        d = degree[nid]
+        size = base_ms * (0.6 + 0.8 * d / max_degree)
+        ax.plot(col, row, 'o', color='#2ca02c', markersize=size,
+                markeredgecolor='#1b5e20', markeredgewidth=0.6, zorder=3)
+        offset = (size / 2.0) / pts_per_data + 0.05
+        ax.text(col, row + offset, f'{nid}[{d}]',
+                ha='center', va='bottom',
+                fontsize=max(3.0, font_size * 0.75), color='black',
+                fontweight='bold', zorder=5)
+
+    ax.set_title(
+        f'MVC Instance\n'
+        f'Nodes: {num_nodes}  |  Edges: {len(edges)}  |  Grid: {grid_size}x{grid_size}',
+        fontsize=max(7, font_size + 1), pad=6,
+    )
+
+    tick_pos = list(range(0, 25, 2))
+    ax.set_xticks(tick_pos)
+    ax.set_xticklabels(tick_pos)
+    ax.set_yticks(tick_pos)
+    ax.set_yticklabels(tick_pos)
+    ax.tick_params(labelsize=max(5, font_size - 1))
+    ax.set_xlabel('x', fontsize=max(6, font_size))
+    ax.set_ylabel('y', fontsize=max(6, font_size))
+
+    plt.tight_layout(pad=0.3)
+    plt.savefig(out_path, dpi=150, bbox_inches='tight', pad_inches=0.05, facecolor='white')
+    plt.close(fig)
+    return

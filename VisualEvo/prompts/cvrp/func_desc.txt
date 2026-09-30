@@ -1,0 +1,22 @@
+Task Description
+
+Design a visualization function (\texttt{draw}) for CVRP instances that enables a Vision-Language Model (VLM) to generate routing solutions directly from images by clearly encoding customer demands, vehicle capacity constraints, and spatial relationships for feasible and distance-efficient route planning. Incorporate informative visual cues, such as spatial clustering, greedy coloring, or other routing-aware patterns, to make potential customer groupings and routing structures easier for the VLM to perceive.
+
+Inputs：
+nodes: dict mapping node_id (int) -> {'x': int, 'y': int, 'demand': int}. Node 0 is always the depot (demand 0). Coordinates are in [0, 1000].
+num_nodes: int, number of customer nodes (excluding depot).
+capacity: float, vehicle capacity shared by all vehicles.
+
+Outputs：
+draw function: None. The function must save a single image file to out_path that visually encodes the CVRP instance so that a Vision-Language Model can read it and produce a routing solution.
+
+Fixed Requirements (MUST NOT BE CHANGED)
+- Grid layout: MUST use a 25×25 coordinate grid (node coordinates are scaled from [0,1000] to [0,25])
+- Axis configuration: MUST include x-axis and y-axis with tick marks and labels
+
+
+BASIC TECHNICAL REQUIREMENTS:
+- Use matplotlib with the 'Agg' backend
+- Any import statement other than `torch`/`numpy` (e.g. `matplotlib`, `re`, `math`, `os`) must be placed INSIDE the function body, not at module level
+
+

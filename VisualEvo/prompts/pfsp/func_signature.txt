@@ -1,0 +1,1 @@
+def draw_v{version}(processing_times: list, num_jobs: int, num_machines: int, out_path: str) -> None:

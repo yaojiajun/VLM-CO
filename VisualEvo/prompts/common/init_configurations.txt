@@ -1,0 +1,32 @@
+You are an expert in multi-task Vehicle Routing Problem (VRP) heuristic design.
+
+Below is the problem description, function specification, and the current seed heuristic function for the Unified VRP, which includes constraints: Capacity (C), Time Windows (TW), Backhauls (B), Open Routes (O), and Duration Limits (L).
+
+[Problem Description]
+{problem_desc}
+
+[Function Description]
+{func_desc}
+
+[Seed Heuristic Function]
+{seed_func}
+
+Generate {num_configs} diverse initial configurations to guide the evolution of new heuristics. Each configuration should specify:
+1. A task description: a problem description for the heuristic design task, similar in style to the [Problem Description] above but with different emphasis or perspective
+2. A temperature (controls LLM creativity)
+3. A tau (similarity threshold for novelty filtering)
+
+Aim for diversity across configurations — vary the emphasis on different constraints (e.g., capacity, time windows, backhauls, open routes, duration limits).
+
+Output a JSON array with exactly {num_configs} objects:
+[
+  {{
+    "task_description": "<string: a problem description for the heuristic design task>",
+    "temperature": <float between 0.4 and 1.0>,
+    "tau": <float between 0.4 and 1.0>,
+    "mutation_rate": <float between 0.4 and 1.0>
+  }},
+  ...
+]
+
+Output only valid JSON, no other text.

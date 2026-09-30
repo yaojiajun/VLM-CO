@@ -1,0 +1,22 @@
+Task Description
+
+Design a visualization function (\texttt{draw}) for MIS instances that enables a Vision-Language Model (VLM) to generate independent set solutions directly from images by clearly encoding node positions and edge connections. Incorporate informative visual cues, such as degree-based coloring, community structure, or other graph-aware patterns, to make independent set structures easier for the VLM to perceive.
+
+Inputs：
+nodes: dict mapping node_id (int) -> {'x': int, 'y': int}. Coordinates are in [0, 1000].
+edges: list of tuples [(node1, node2), ...] representing graph edges.
+num_nodes: int, number of nodes in the graph.
+
+Outputs：
+draw function: None. The function must save a single image file to out_path that visually encodes the MIS instance so that a Vision-Language Model can read it and produce an independent set solution.
+
+Fixed Requirements (MUST NOT BE CHANGED)
+- Grid layout: MUST use a 25×25 coordinate grid (node coordinates are scaled from [0,1000] to [0,25])
+- Axis configuration: MUST include x-axis and y-axis with tick marks and labels
+
+
+BASIC TECHNICAL REQUIREMENTS:
+- Use matplotlib with the 'Agg' backend
+- Any import statement other than `torch`/`numpy` (e.g. `matplotlib`, `re`, `math`, `os`) must be placed INSIDE the function body, not at module level
+
+

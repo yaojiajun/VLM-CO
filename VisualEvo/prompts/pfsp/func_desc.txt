@@ -1,0 +1,22 @@
+Task Description
+
+Design a visualization function (\texttt{draw}) for PFSP instances that enables a Vision-Language Model (VLM) to generate job sequencing solutions directly from images by clearly encoding processing times for each job on each machine. Incorporate informative visual cues, such as total processing time indicators, bottleneck machine highlighting, or other scheduling-aware patterns, to make good job sequences easier for the VLM to perceive.
+
+Inputs：
+processing_times: 2D array or list of lists where processing_times[job][machine] is the processing time of job on machine.
+num_jobs: int, number of jobs.
+num_machines: int, number of machines.
+
+Outputs：
+draw function: None. The function must save a single image file to out_path that visually encodes the PFSP instance so that a Vision-Language Model can read it and produce a job sequencing solution.
+
+Fixed Requirements (MUST NOT BE CHANGED)
+- Grid layout: MUST use a grid-based visualization for processing times
+- Axis configuration: MUST include appropriate axis labels for jobs and machines
+
+
+BASIC TECHNICAL REQUIREMENTS:
+- Use matplotlib with the 'Agg' backend
+- Any import statement other than `torch`/`numpy` (e.g. `matplotlib`, `re`, `math`, `os`) must be placed INSIDE the function body, not at module level
+
+

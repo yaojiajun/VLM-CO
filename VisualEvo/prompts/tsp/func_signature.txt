@@ -1,0 +1,1 @@
+def draw_v{version}(nodes: dict, num_nodes: int, out_path: str) -> None:

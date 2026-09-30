@@ -1,0 +1,9 @@
+problem_name: mvc
+problem_type: mvc
+obj_type: min
+problem_size: 50
+func_name: draw
+description: |
+ I need assistance in designing a new image-rendering function that visualizes Minimum Vertex Cover (MVC) instances for consumption by a Vision-Language Model (VLM). The function takes a graph (nodes and edges) and must render it as a single image that a VLM can look at and then predict a minimum vertex cover. The rendered images are used to build a training dataset: a base VLM is fine-tuned (LoRA SFT) on a set of these rendered images paired with instructions, and the resulting fine-tuned model's ability to solve held-out MVC instances purely from images is the ultimate measure of how good the rendering function is. A good rendering function must make node positions and edge connections clearly and unambiguously readable, since any information the VLM cannot read from the image cannot be used to produce a correct solution. The objective is to minimize the size of vertex covers found by the fine-tuned VLM on a held-out evaluation set of MVC instances rendered with the same function.
+pro: Minimum Vertex Cover (MVC)
+alg: Vision-Language Model (VLM) SFT-based Neural Combinatorial Optimization

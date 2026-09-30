@@ -1,0 +1,9 @@
+problem_name: cvrp
+problem_type: cvrp
+obj_type: min
+problem_size: 50 # number of training instances rendered into images for SFT
+func_name: draw
+description: |
+ I need assistance in designing a new image-rendering function that visualizes Capacitated Vehicle Routing Problem (CVRP) instances for consumption by a Vision-Language Model (VLM). The function takes a CVRP instance (customer coordinates and demands, plus a depot) and must render it as a single image that a VLM can look at and then predict a good set of routes for. The rendered images are used to build a training dataset: a base VLM is fine-tuned (LoRA SFT) on a set of these rendered images paired with instructions, and the resulting fine-tuned model's ability to solve held-out CVRP instances purely from images is the ultimate measure of how good the rendering function is. A good rendering function must make node positions, the depot, and every customer's demand clearly and unambiguously readable, since any information the VLM cannot read from the image cannot be used to produce a correct solution. The objective is to minimize the optimality gap (and infeasibility) of the fine-tuned VLM's solutions on a held-out evaluation set of CVRP instances rendered with the same function.
+pro: Capacitated Vehicle Routing Problem (CVRP)
+alg: Vision-Language Model (VLM) SFT-based Neural Combinatorial Optimization
