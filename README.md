@@ -129,7 +129,6 @@ python sft_train_vision_unified.py \
     --num_train_epochs 1 \
     --learning_rate 2e-4 \
     --max_seq_length 20000 \
-    --disable_wandb
 ```
 
 **Key Arguments**:
@@ -152,7 +151,6 @@ python rl_train_vision_unified.py \
     --gradient_accumulation_steps 4 \
     --num_epochs 1 \
     --learning_rate 1e-6 \
-    --disable_wandb
 ```
 
 **GRPO Parameters**:
