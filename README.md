@@ -91,7 +91,7 @@ pip install -r requirements.txt
 You can generate your own data through the problem-specific environments under `/Envs/`, or use the data generated in the original paper:
 
 - **Text DATA**: https://drive.google.com/drive/folders/1bE1coGUa00gfuMkPXnfvldi1-WHGNnEb?usp=sharing
-- **Image DATA**: https://drive.google.com/drive/folders/1VN9crftdW7DTsMQupbc06u6PzRT-Bwnx?usp=sharing
+- **Image DATA**: https://drive.google.com/drive/folders/1KcASWzhcNmiFrsAVTNraqCGFypZq4ejC
 ### Data Format
 
 Each JSON record should contain:
